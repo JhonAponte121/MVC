@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" >
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="Lindo.css">
+
+
+<script src="/html2canvas.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js" ></script>
+
+</head>
+<body onload="traerLocal();" style="background-color:rgb(255, 255, 255);">
+    <div class="container-fluid" id="divPrincipal">
+    <br>
+        <fieldset>
+             <div class = "border" style="width: 630px; height:530px ;">
+            <div class="form-group" style="position: relative;left: 15px">
+                <br>
+                <label><b>Cedula:</b></label>
+                <button class = "btn btn-primary" onclick="buscarDatos()" style="position: relative; left: 225px; top: 38px;" >
+                 Buscar
+            </button>
+            <input type="text" id="cedula" name="cedula" style="width: 250px" class="form-control">
+
+                </div>
+                   
+                <div class="form-group" style="position: relative;left: 15px">
+                    
+                    <label><b>Nombre y Apellido:</b></label>
+                   
+                    <input type="text" id="nombre" style="width: 250px" class="form-control">
+
+                </div>
+
+                <div class="form-group" style="position: relative;left: 15px">
+                    
+                    <label><b>Fecha de Nacimiento:</b></label>
+                   
+                    <input type="text" id="fechanacimiento" style="width: 250px" class="form-control">
+
+                </div>
+                <div class="form-group" style="position: relative;left: 15px">
+                   
+                    <label><b>Lugar de Nacimiento:</b></label>
+                   
+                    <input type="text" id="lugarnacimiento" style="width: 250px" class="form-control">
+
+                </div>
+                <div class="form-group" style="position: relative;left: 15px">
+                    
+                    <label><b>Signo Zodiaco:</b></label>
+                   
+                    <input type="text" id="signo" style="width: 250px" class="form-control">
+
+                </div>
+                <div class="form-group" style="position: relative;left: 400px; bottom:320px ;">
+                    <br>
+                    <label><b>Foto:</b></label>
+                    <div class="border" style="width: 150px;">
+                        <img class="card-img-top" id="foto" style="width: 150px; height: 175px;" >
+
+                    </div>
+
+                   <button class="btn btn-danger" onclick="capturar();" style="position: relative; left: 30px; bottom: 1px;"> 
+                     Cambiar Foto
+                   </button>
+                </div>
+
+                <div style="position: relative; left: 425px; bottom: 320px">
+                <button class="btn btn-warning" onclick="confirmarDatos();">
+                Confirmar
+                </button>
+                </div>
+             </div>
+        </fieldset>
+
+
+        <div style="position: relative; left: 720px; bottom: 500px; width: 605px;">
+
+           <center><p><h4>Modelo de cedula</h4></p></center>
+            <div id="cedulaImage" class="border rounded cedula" style="height: 290px; width: 490px; position: relative; left: 25px;">
+                <div class="row mb-3">
+             <div class="col col-4">
+                 <div>
+                     <img src="Escudo.png" style="width: 35px; height: 35px; position: relative; left: 15px; top: 10px;" >
+                 </div>
+                 <div class= "border" style="width: 120px; height: 150px; position: relative; left: 5px; top:25px;">
+                        <img id="fotoDesign" style="width: 120px; height: 150px;">
+
+                 </div>
+                 <div style="position: relative; left: 5px; top: 65px;">
+                    <h6 style="font-size: 12px; position: relative; bottom: 15px;" id="nombreDesign" ></h6>
+                   
+                 </div>
+
+             </div>
+             <div class="col col-5">
+                 <h6 style="font-size: 15px; position: relative; right: 15px;" class="text-center">REPUBLICA DOMINICANA</h6>
+
+                 <h6 style="font-size: 14px; position: relative; right: 15px;" class="text-center">JUNTA CENTRAL ELECTORAL</h6>
+
+                 <h6 style="font-size: 14px; position: relative; right: 15px;" class="text-center">Cedula de Identidad</h6>
+
+                 <h6 style="font-size: 20px; position: relative; right: 15px;" class="text-center" id="cedulaDesign"></h6>
+                  
+                  <h6 style="font-size: 10px; position: relative; right: 15px;" class="text-center">Fecha De Nacimiento</h6>
+
+                  <h6 style="font-size: 13px; position: relative; right: 15px;" class="text-center" id="fechaDesign"></h6>
+
+                  <h6 style="font-size: 10px; position: relative; right: 15px;" class="text-center">Lugar de Nacimiento:</h6>
+
+                  <h6 style="font-size: 13px; position: relative; right: 15px;" class="text-center" id="lugarDesign"></h6>
+
+                  <h6 style="font-size: 8px; position: relative; right: 15px;" class="text-center">Signo Del Zodiaco</h6>
+
+                  <h6 style="font-size: 13px; position: relative; right: 15px;" class="text-center" id="horoscopoDesign"></h6>
+
+                </div>
+                <div class="col col-5">
+
+                    <div>
+                        <img id="fotoDesign2" style="width: 50px; height: 60px; position: relative; left: 420px; bottom: 90px;">
+                  </div>
+                  <div>
+                    <img id="fotoSigno" style="width: 55px; height: 55px; position: relative; left: 310px; bottom: 130px;">
+              </div>
+
+                </div>
+             </div>
+            </div>
+
+            <br>
+        <button class= "btn btn-success" id="importar img" style="position: relative; left: 45px ;" onclick=" exportarIMAGE();">Convertir Imagen</button>
+        <button class="btn btn-primary" style="position: relative; left: 55px;" onclick="guardarPersonas()">Guardar</button>
+        </div>
+        
+    </div>
+
+    </div>
+    <div>
+        <butto class="btn btn-primary" onclick="verCedulas();" style="position: relative; left: 550px; bottom: 300px;">Ver Cedulas</button>
+       </div>
+
+     <div id="cedulasGuardas" styles="position: relative; left: 50px; top: 25px;">
+      <center><p class="lead">Cedulas Guardadas</p> </center>
+     <div id="cedulasCargadas">
+
+    </div>
+
+    <button class="btn btn-primary" onclick="atras();">Atras</button>
+    </div>
+
+    <textarea id="text_modelo" style="display: none;">
+        <div id="text_modelo" class="border rounded cedula" style="height: 290px; width: 490px; position: relative; left: 25px;">
+            <div class="row mb-3">
+         <div class="col col-4">
+             <div>
+                 <img src="Escudo.png" style="width: 35px; height: 35px; position: relative; left: 15px; top: 10px;" >
+             </div>
+             <div class= "border" style="width: 120px; height: 150px; position: relative; left: 5px; top:25px;">
+                    <img id="fotoDesign" src={foto} style="width: 120px; height: 150px;">
+
+             </div>
+             <div style="position: relative; left: 5px; top: 65px;">
+                <h6 style="font-size: 12px; position: relative; bottom: 15px;" id="nombreDesign" >{nombre}</h6>
+               
+             </div>
+
+         </div>
+
+         <div class="col col-5">
+             <h6 style="font-size: 14px; position: relative; right: 15px;" class="text-center">REPUBLICA DOMINICANA</h6> <br>
+
+             <h6 style="font-size: 11px; position: relative; right: 15px;" class="text-center">JUNTA CENTRAL ELECTORAL</h6><br>
+
+             <h6 style="font-size: 11px; position: relative; right: 15px;" class="text-center">Cedula de Identidad</h6><br>
+
+             <h6 style="font-size: 20px; position: relative; right: 15px;" class="text-center" id="cedulaDesign">{cedula}</h6>
+              <br>
+
+              <h6 style="font-size: 8px; position: relative; right: 15px;" class="text-center">Fecha De Nacimiento</h6>
+              <h6 style="font-size: 13px; position: relative; right: 15px;" class="text-center" id="fechaDesign">{fechanacimiento}</h6>
+              <h6 style="font-size: 8px; position: relative; right: 15px;" class="text-center">Lugar de Nacimiento:</h6>
+              <h6 style="font-size: 13px; position: relative; right: 15px;" class="text-center" id="lugarDesign">{lugarnacimiento}</h6>
+              <h6 style="font-size: 8px; position: relative; right: 15px;" class="text-center">Signo Del Zodiaco</h6>
+              <h6 style="font-size: 13px; position: relative; right: 15px;" class="text-center" id="horoscopoDesign">{signo}</h6>
+
+            </div>
+            <div>
+
+              <div>
+                <img id="fotoSigno" src={fotosigno} style="width: 55px; height: 55px; position: relative; left: 310px; bottom: 130px;">
+          </div>
+
+            </div>
+         </div>
+        </div>
+
+        <br>
+    </textarea>
+    <div id="captura" style="position: relative; left: 550px; top: 100px">
+       <p class="lead">Cambiar Imagen</p>
+       <div id= "my_camera"></div>
+        <br>
+        <button class="btn btn-primary" onclick="take_snapshot();">Colocar foto</button>
+        <br>
+        <div id="result"></div>
+        <br>
+        <button class= "btn btn-success" onclick="atras();">Atras</button>
+    </div>
+    <script src="MVC.js"></script>
+ </body>
+</html>
